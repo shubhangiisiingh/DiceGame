@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Game</title>
+    <style>
+        .container {
+            width: 70%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .dice {
+            text-align: center;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        body {
+            background-color:gray;
+            margin: 0;
+        }
+
+        h1 {
+            margin: 30px;
+            font-family: "Lobster",cursive;
+            font-size: 4.5rem;
+            color: white;
+            text-align: center;
+        }
+
+        p {
+            font-size: 2rem;
+            color:wheat;
+            font-family: "Indie Flower";
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .bottom {
+            padding-top: 30px;
+        }
+
+        .btn {
+            background: greenyellow;
+            font-family: "Indie Flower";
+            border-radius: 7px;
+            color: #ffff;
+            font-size: 30px;
+            padding: 16px 25px 16px 25px;
+        }        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Let's Play</h1>
+
+        <div class="dice">
+            <p class="P1">Player1</p>
+            <img src="dice6.png" alt="dice 6" class="img1">
+        </div>
+        <div class="dice">
+            <p class="P2">Player2</p>
+            <img src="dice6.png" alt="dice 6" class="img2">
+        </div>
+    
+
+    <div class="bottom">
+        <button type="button" class="btn" onclick="rollTheDice()">
+            Roll The Dice</button>
+        
+    </div>
+    <div class="bottom">
+        <button type="button" class="btn" onclick="editNames()">
+            Edit Names</button>
+        
+    </div>
+</div>
+    <script>
+        let player1 = "Player1";
+        let player2 = "Player2";
+
+        function editNames() {
+            player1 = prompt("Enter name for player1")
+            player2 = prompt("Enter name for player2")
+
+            document.querySelector("p.P1").innerHTML = player1;
+
+            document.querySelector("p.P2").innerHTML = player2;
+        }
+
+
+        function rollTheDice() {
+            let diceNum1 = document.querySelector(".img1");
+            let diceNum2 = document.querySelector(".img2");
+
+            let result = document.querySelector('h1')
+            result.innerHTML = ""
+           
+                let randomNumber1 = Math.floor(Math.random() * 6) + 1;
+                let randomNumber2 = Math.floor(Math.random() * 6) + 1;
+
+                diceNum1.setAttribute('src', 'dice' + randomNumber1 + '.png');
+                diceNum2.setAttribute('src', 'dice' + randomNumber2 + '.png');
+
+                if (randomNumber1 === randomNumber2) {
+                    result.innerHTML = "Draw!"
+                }
+                else if (randomNumber1 < randomNumber2) {
+                    result.innerHTML = (player2 + " WINS!");
+                }
+                else {
+                    result.innerHTML = (player1 + " WINS!");
+                }
+
+            
+        }
+
+    </script>
+</body>
+
+</html>
